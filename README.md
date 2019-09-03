@@ -26,6 +26,13 @@ TypeScript support in Vue.js have been an adventure since the beginning. Due to 
 
 ## Plan
 
+- Presentation
+
+  - Eduardo San Martin Morote
+  - Freelance
+  - Vue.js Core team
+  - @posva on Twitter and Github
+
 - Vue.js object-based API and Out of the box TS support
 
   - Present the basics of Vue.js API for any public
@@ -123,6 +130,7 @@ TypeScript support in Vue.js have been an adventure since the beginning. Due to 
   - This isn't much but if you write Vue plugins and you add properties to Vue instances (explain `$router` and `$store`), you can look at how they do
   - Open vuex/types/vue.d.ts
 - Vue 3
+
   - Written in TypeScript, typings become essential
   - Droped RFC about Class based components
     - Closed PR: https://github.com/vuejs/rfcs/pull/17
@@ -154,3 +162,8 @@ TypeScript support in Vue.js have been an adventure since the beginning. Due to 
       - Can create a simple store easily (8)
       - It would still be nice to have an API around it so it stays clean an maintainable, @ktsn will take a look at this
     - Other improvements to come like Vue Router, but it's not related to Typescript anymore, it's more about having consistent APIs
+  - The future of TypeScript is looking good for Vue.js
+
+- Closing
+  - If you enjoy the Vue ecosystem and you want to support its development, I have a [Github Sponsorship page](https://github.com/users/posva/sponsorship)
+  - @posva on Twitter
