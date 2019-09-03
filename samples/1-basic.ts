@@ -4,7 +4,7 @@ const vm = new Vue({
   el: '#app',
   data: {
     isActive: true,
-    amount: 20,
+    amount: 0,
     name: 'Eduardo',
   },
 

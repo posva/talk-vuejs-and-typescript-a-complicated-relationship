@@ -1,5 +1,7 @@
 # Vue.js and Typescript a complicated relationship
 
+Eduardo San Martin Morote - [Twitter](https://twitter.com/posva) - [https://esm.dev](https://esm.dev)
+
 - Paris Typescript Meetup 03/09/2019
 - Durée 30m
 
