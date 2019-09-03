@@ -1,13 +1,13 @@
-# Vue.js and Typescript a complicated relationship
+# Vue.js and TypeScript a complicated relationship
 
 Eduardo San Martin Morote - [Twitter](https://twitter.com/posva) - [https://esm.dev](https://esm.dev)
 
-- Paris Typescript Meetup 03/09/2019
+- Paris TypeScript Meetup 03/09/2019
 - Durée 30m
 
 ## Description
 
-Typescript support in Vue.js have been an adventure since the beginning. Due to how the API is designed, allowing typings in Vue Components heavily relies on generics and ternary types. While things are taking a completely different turn with the new Composition API, there is some History we can learn from. During this talk we will talk about how to type Vue.js components with its current API and understand why we need to install a few dependencies by taking a look at Vue typings. We will also talk about what are the solutions we will be able to use in the future with the new Composition API.
+TypeScript support in Vue.js have been an adventure since the beginning. Due to how the API is designed, allowing typings in Vue Components heavily relies on generics and ternary types. While things are taking a completely different turn with the new Composition API, there is some History we can learn from. During this talk we will talk about how to type Vue.js components with its current API and understand why we need to install a few dependencies by taking a look at Vue typings. We will also talk about what are the solutions we will be able to use in the future with the new Composition API.
 
 ## Core concepts
 
@@ -58,11 +58,11 @@ Typescript support in Vue.js have been an adventure since the beginning. Due to 
 
   - Use Vue.extend, show limitations (3)
     - `required` is useless
-    - Could be much better with Typescript decorators
+    - Could be much better with TypeScript decorators
   - See https://vuejs.org/v2/guide/typescript.html
   - Lessons Learned
 
-    - Some API are designed in a not fully compatible Typescript way (not ergonomical). eg: we can add non-reactive things to Vue in `created` hook, but we need to declare the property somewhere (3):
+    - Some API are designed in a not fully compatible TypeScript way (not ergonomical). eg: we can add non-reactive things to Vue in `created` hook, but we need to declare the property somewhere (3):
 
     ```ts
     created () {
@@ -78,7 +78,8 @@ Typescript support in Vue.js have been an adventure since the beginning. Due to 
     - explain quickly state, mutations and actions
     - show working example (4)
     - Look at index.d.ts in vuex, only generic is the state so no mutation/action autocompletion
-    - It could be possible to extract mutation names with `keyof` and then type the arguments an `infer`. For example we can allow returning a plain value and still infer the returned value of an action as a Promise of that value but also allow returning a promise or not returning anything
+    - To have mutations we would have to bring the Mutations Tree all over the place, same with actions.
+    - Then it would be possible to extract mutation names with `keyof` and then use ternaries with `infer` to allow flexibile cases (no state vs state, no mutations, etc). For example we can allow returning a plain value and still infer the returned value of an action as a Promise of that value but also allow returning a promise or not returning anything
 
     ```ts
     export type ActionReturnType<A extends Function> = A extends (
@@ -88,7 +89,9 @@ Typescript support in Vue.js have been an adventure since the beginning. Due to 
       : Promise<void>
     ```
 
-    - This is to support modules: a way to organize the store in smaller stores
+    - But bigger apps have modular requirements for Stores: modules: a way to organize the store in smaller stores
+    - Explain modules
+    - This brings a new layer of complexity by making types recursive
 
   - Dynamic module registration = no static typings
     - but allow other patters like code splitting
@@ -97,23 +100,38 @@ Typescript support in Vue.js have been an adventure since the beginning. Due to 
   - Alternatives:
     - https://github.com/ktsn/vuex-smart-module
     - https://github.com/ktsn/sinai
+  - Still a big issue for TypeScript users
 
 - Classes + Decorator based TS support
   - More natural to TS users
   - Way shorter thanks to getters, methods
-  - Using https://github.com/vuejs/vue-class-component (included in Vue.js Typescript guide)
+  - Using https://github.com/vuejs/vue-class-component (included in Vue.js TypeScript guide)
     - Local properties = data
     - methods = component methods / lifecycle hooks
     - getters = computed
     - setters = computed setters
     - Every other option is added through the `@Component` decorator
   - Even further with https://github.com/kaorun343/vue-property-decorator
+    - Pretty much remove the necessity of using an argument for `@Component`
+    - Some extra helpers like `@PropSync`
 - Editor support
   - VSCode + Vetur in-template
+  - Autocompletion for methods and propertis in template (7)
   - https://github.com/vuejs/vetur
   - Follow the repo and @octref for new
 - Allow plugins to extend types
+  - This isn't much but if you write Vue plugins and you add properties to Vue instances (explain `$router` and `$store`), you can look at how they do
+  - Open vuex/types/vue.d.ts
 - Vue 3
-  - Written in Typescript, typings become essential
+  - Written in TypeScript, typings become essential
   - Droped RFC about Class based components
+    - Closed PR: https://github.com/vuejs/rfcs/pull/17
+    - RFC: https://github.com/vuejs/rfcs/blob/class-api/active-rfcs/0000-class-api.md
+      - Very similar to vue-class-component but out of the box
+    - Dropping reason: https://github.com/vuejs/rfcs/pull/17#issuecomment-494242121
+      - Decorators are still TS only as they are stage-2 in js https://github.com/tc39/proposal-decorators and they are crucial to add some properties to the component like props. One of the values of Vue is being accessible and being able to use it without a compilation step, this would go against it
+      - Complex, hard to maintain types that grow with time
+      - Do not improve on limitations of the current API
+      -
+      - important because breaking changes affect people
   - Composition API with full typing support
