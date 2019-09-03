@@ -1,6 +1,10 @@
 import Vue from 'vue'
 
 const Component = Vue.extend({
+  data: () => ({
+    isActive: true,
+  }),
+
   props: {
     text: {
       type: String,
@@ -12,6 +16,8 @@ const Component = Vue.extend({
 
   methods: {
     doStuff() {
+      this.isActive = !this.isActive
+
       this.text.toUpperCase()
       // color could be undefined because it is not required
       this.color.toUpperCase()
