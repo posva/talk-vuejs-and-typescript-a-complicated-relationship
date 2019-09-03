@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@vue/composition-api@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-0.3.0.tgz#40ae3241f6eebf0bba9efc21d1ff73b8d129b02e"
+  integrity sha512-WXscaD9hPGxJIOh4RMSd+ueLBkfFox6VwFSvmpLUAHSpQuNdobHpD7S4i06yf+qMI+RfEoMHiZFuXOds/AOhxQ==
+  dependencies:
+    tslib "^1.9.3"
+
+tslib@^1.9.3:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+
 typescript@^3.6.2:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.2.tgz#105b0f1934119dde543ac8eb71af3a91009efe54"

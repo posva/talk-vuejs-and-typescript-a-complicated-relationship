@@ -129,9 +129,26 @@ TypeScript support in Vue.js have been an adventure since the beginning. Due to 
     - RFC: https://github.com/vuejs/rfcs/blob/class-api/active-rfcs/0000-class-api.md
       - Very similar to vue-class-component but out of the box
     - Dropping reason: https://github.com/vuejs/rfcs/pull/17#issuecomment-494242121
+      - Do not improve on limitations of the current API
+      - Not using classes brings a performance boost
       - Decorators are still TS only as they are stage-2 in js https://github.com/tc39/proposal-decorators and they are crucial to add some properties to the component like props. One of the values of Vue is being accessible and being able to use it without a compilation step, this would go against it
       - Complex, hard to maintain types that grow with time
-      - Do not improve on limitations of the current API
-      -
-      - important because breaking changes affect people
   - Composition API with full typing support
+    - Initially solves a different problem: instead of trying to replace the object syntax API, it's a different, more advanced API that also brings **composability**. It's similar to _hooks_ in _React_
+    - Went through **a lot of feedback**, toxic, hateful misinformed comments (thanks Reddit and Hacker News)
+    - PR: https://github.com/vuejs/rfcs/pull/78
+    - RFC: https://vue-composition-api-rfc.netlify.com (a website)
+      - I recommend to read the whole thing from start to end, as an article
+      - If you read comments, you may come across terms that have been renamed like `state` -> `reactive` and `value` -> `ref`
+      - Show the comparison image
+      - Final code of reorganized component: https://gist.github.com/yyx990803/8854f8f6a97631576c14b63c8acd8f2e
+      - Extra benefits like better compression
+    - Can be played with for Vue 2 at https://github.com/vuejs/composition-api
+      - It has limitations (listed in readme)
+      - It reflects RFC's API, meaning it could have breaking changes
+      - Only use it if you need the composition level offered by the new API or if you want to experiment with a different way of doing things.
+      - Please, report any bugs
+    - Vuex Stores API will have to be revisited
+      - Can create a simple store easily (8)
+      - It would still be nice to have an API around it so it stays clean an maintainable, @ktsn will take a look at this
+    - Other improvements to come like Vue Router, but it's not related to Typescript anymore, it's more about having consistent APIs
