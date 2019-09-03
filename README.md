@@ -140,9 +140,11 @@ TypeScript support in Vue.js have been an adventure since the beginning. Due to 
     - RFC: https://vue-composition-api-rfc.netlify.com (a website)
       - I recommend to read the whole thing from start to end, as an article
       - If you read comments, you may come across terms that have been renamed like `state` -> `reactive` and `value` -> `ref`
+      - It was called function api before because it's based on functions
       - Show the comparison image
       - Final code of reorganized component: https://gist.github.com/yyx990803/8854f8f6a97631576c14b63c8acd8f2e (9) vs https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue
       - Extra benefits like better compression
+      - Typings are natural as we are using functions and returning an object on the `setup` method, which can easily be inferred since it's no longer 5 things to take into account (data, props, methods, computed, inject)
     - Can be played with for Vue 2 at https://github.com/vuejs/composition-api
       - It has limitations (listed in readme)
       - It reflects RFC's API, meaning it could have breaking changes
