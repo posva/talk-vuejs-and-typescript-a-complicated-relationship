@@ -143,7 +143,7 @@ TypeScript support in Vue.js have been an adventure since the beginning. Due to 
       - Complex, hard to maintain types that grow with time
   - Composition API with full typing support
     - Initially solves a different problem: instead of trying to replace the object syntax API, it's a different, more advanced API that also brings **composability**. It's similar to _hooks_ in _React_
-    - Went through **a lot of feedback**, toxic, hateful and misinformed comments (thanks Reddit and Hacker News)
+    - Went through **a lot of feedback** but also quite a few toxic, hateful and misinformed comments (thanks Reddit and Hacker News)
     - PR: https://github.com/vuejs/rfcs/pull/78
     - RFC: https://vue-composition-api-rfc.netlify.com (a website)
       - I recommend to read the whole thing from start to end, as an article
